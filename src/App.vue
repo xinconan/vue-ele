@@ -1,21 +1,39 @@
 <template>
   <div id="app">
-    <hello></hello>
+    <v-header></v-header>
+    <div class="tab">
+      <div class="tab-item">
+        <!-- 使用 router-link 组件来导航. -->
+        <!-- 通过传入 `to` 属性指定链接. -->
+        <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
+        <router-link to="/goods">商品</router-link>
+      </div>
+      <div class="tab-item">
+        <router-link to="/ratings">评价</router-link>
+      </div><div class="tab-item">
+        <router-link to="/seller">商家</router-link>
+      </div>
+    </div>
+
+    <!-- 路由出口 -->
+    <!-- 路由匹配到的组件将渲染在这里 -->
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Hello from './components/Hello'
+import header from './components/header/header'
 
 export default {
   name: 'app',
   components: {
-    Hello
+    'v-header': header
   }
 }
 </script>
 
-<style>
+<style lang="scss">
+  @import "common/scss/mixin";
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -23,5 +41,28 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+
+  .tab{
+    display: flex;
+    width: 100%;
+    height:40px;
+    line-height: 40px;
+    /*border-1px(rgba(1, 7, 17, 0.1));*/
+
+    .tab-item{
+      flex: 1;
+      text-align:center;
+
+      & > a{
+        display: block;
+        font-size: 14px;
+        color: rgb(77, 85, 93);
+
+        &.active{
+          color: rgb(240, 20, 20);
+        }
+      }
+    }
+  }
 }
 </style>
