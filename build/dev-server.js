@@ -15,6 +15,36 @@ var port = process.env.PORT || config.dev.port
 var proxyTable = config.dev.proxyTable
 
 var app = express()
+
+// 自定义的路由（Mock数据）start ==============
+var appData = require('../data.json');
+var seller = appData.seller;
+var goods = appData.goods;
+var ratings = appData.ratings;
+
+var apiRoutes = express.Router();
+apiRoutes.get('/seller', function (req, res) {
+  res.json({
+    errno: 0,
+    data: seller
+  })
+});
+apiRoutes.get('/goods', function(req, res){
+  res.json({
+    errno: 0,
+    data: goods
+  });
+});
+
+apiRoutes.get('/rating', function(req, res){
+  res.json({
+    errno: 0,
+    data: ratings
+  });
+});
+app.use('/api',apiRoutes);
+// end of 自定义路由 =========================
+
 var compiler = webpack(webpackConfig)
 
 var devMiddleware = require('webpack-dev-middleware')(compiler, {

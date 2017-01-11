@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <v-header></v-header>
+    <v-header :seller="seller"></v-header>
     <div class="tab">
       <div class="tab-item">
         <!-- 使用 router-link 组件来导航. -->
@@ -22,14 +22,29 @@
 </template>
 
 <script>
-import header from './components/header/header'
+import header from './components/header/header';
 
+const ERR_OK = 0;
 export default {
+  data() {
+    return {
+      seller: {}
+    };
+  },
+  created() {
+    this.$http.get('/api/seller').then((res) => {
+      res = res.body;
+      console.log(res);
+      if (res.errno === ERR_OK) {
+        this.seller = res.data;
+      }
+    });
+  },
   name: 'app',
   components: {
     'v-header': header
   }
-}
+};
 </script>
 
 <style lang="scss">
@@ -47,7 +62,8 @@ export default {
     width: 100%;
     height:40px;
     line-height: 40px;
-    /*border-1px(rgba(1, 7, 17, 0.1));*/
+    @include border-1px(rgba(1, 7, 17, 0.1));
+
 
     .tab-item{
       flex: 1;

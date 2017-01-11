@@ -1,6 +1,6 @@
 # vue-ele
 
-> Vue.js 2.0仿饿了么实战练习
+> Vue.js 2.0仿饿了么实战练习，基于sass
 
 ## Build Setup
 
