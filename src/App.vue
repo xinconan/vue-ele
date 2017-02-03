@@ -49,11 +49,11 @@ export default {
 
 <style lang="scss">
   @import "common/scss/mixin";
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 
   .tab{
@@ -61,7 +61,7 @@ export default {
     width: 100%;
     height:40px;
     line-height: 40px;
-    @include border-1px(rgba(1, 7, 17, 0.1));
+    @include border-bottom(rgba(1, 7, 17, 0.1));
 
 
     .tab-item{
