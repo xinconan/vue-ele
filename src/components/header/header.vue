@@ -37,6 +37,9 @@
         <div class="detail-wrapper clearfix">
           <div class="detail-main">
             <h1 class="name">{{seller.name}}</h1>
+            <div class="star-wrapper">
+              <star :size="48" :score="seller.score"></star>
+            </div>
           </div>
         </div>
         <div class="detail-close" @click="hideDetail">
@@ -47,28 +50,32 @@
 </template>
 
 <script>
-    export default{
-      name: 'header',
-      props: {
-        seller: Object
+  import star from 'components/star/star';
+  export default{
+    name: 'header',
+    props: {
+      seller: Object
+    },
+    data() {
+      return {
+        detailShow: false
+      };
+    },
+    methods: {
+      showDetail() {
+        this.detailShow = true;
       },
-      data() {
-        return {
-          detailShow: false
-        };
-      },
-      methods: {
-        showDetail() {
-          this.detailShow = true;
-        },
-        hideDetail() {
-          this.detailShow = false;
-        }
-      },
-      created() {
-        this.classMap = ['decrease', 'discount', 'guarantee', 'invoice', 'special'];
+      hideDetail() {
+        this.detailShow = false;
       }
-    };
+    },
+    created() {
+      this.classMap = ['decrease', 'discount', 'guarantee', 'invoice', 'special'];
+    },
+    components: {
+      star
+    }
+  };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -256,6 +263,11 @@
             text-align: center;
             font-size: 16px;
             font-weight: 700;
+          }
+          .star-wrapper{
+            margin-top: 16px;
+            padding: 2px 0;
+            text-align: center;
           }
         }
       }
