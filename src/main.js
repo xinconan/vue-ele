@@ -4,8 +4,11 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VueResource from 'vue-resource';
 import App from './App';
-import goods from './components/goods/goods.vue';
-import ratings from './components/ratings/ratings.vue';
+import goods from 'components/goods/goods.vue';
+import ratings from 'components/ratings/ratings.vue';
+
+import 'common/scss/icon.css';
+// require('common/scss/icon.scss');
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
