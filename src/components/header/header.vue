@@ -45,6 +45,20 @@
               <div class="text">优惠信息</div>
               <div class="line"></div>
             </div>
+            <ul v-if="seller.supports" class="supports">
+              <li class="support-item" v-for="item in seller.supports">
+                <span class="icon" :class="classMap[item.type]"></span>
+                <span class="text">{{item.description}}</span>
+              </li>
+            </ul>
+            <div class="title">
+              <div class="line"></div>
+              <div class="text">商家公告</div>
+              <div class="line"></div>
+            </div>
+            <div class="bulletin">
+              <p class="content">{{seller.bulletin}}</p>
+            </div>
           </div>
         </div>
         <div class="detail-close" @click="hideDetail">
@@ -290,6 +304,59 @@
               padding: 0 12px;
               font-weight: 700;
               font-size: 14px;
+            }
+          }
+          .supports{
+            width: 80%;
+            margin: 0 auto;
+
+            .support-item{
+              padding: 0 12px;
+              margin-bottom: 12px;
+              font-size: 0;
+              &:last-child{
+                margin-bottom: 0;
+              }
+              .icon{
+                display: inline-block;
+                width: 16px;
+                height: 16px;
+                vertical-align: top;
+                margin-right: 6px;
+                background-size: 16px 16px;
+                background-repeat: no-repeat;
+
+                &.decrease{
+                  @include bg-image('images/decrease_2');
+                }
+                &.discount{
+                  @include bg-image('images/discount_2');
+                }
+                &.guarantee{
+                  @include bg-image('images/guarantee_2');
+                }
+                &.invoice{
+                  @include bg-image('images/invoice_2');
+                }
+                &.special{
+                  @include bg-image('images/special_2');
+                }
+              }
+              .text{
+                line-height: 16px;
+                font-size: 12px;
+              }
+            }
+          }
+          .bulletin{
+            width: 80%;
+            margin: 0 auto;
+
+            .content{
+              padding: 0 12px;
+              line-height: 24px;
+              font-size: 12px;
+              font-weight: 200;
             }
           }
         }
